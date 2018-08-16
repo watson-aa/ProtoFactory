@@ -15,7 +15,7 @@ public class SpecFileReader extends FileReaderSuper {
                 String id = line.substring(0, line.indexOf(':'));
 
                 // +1 to get past the colon.  Regex accounts for careless spacing on the parts
-                String[] parts = line.substring(id.length()+1).split("\\s*,\\s*");
+                String[] parts = line.substring(id.length()+2).split("\\s*,\\s*");
 
                 widgetSpecs.add(new WidgetSpec(id, parts));
             }
