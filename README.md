@@ -3,7 +3,7 @@
 ## Widget Factory Exercise - Java
 
 ### Files:
-####Data:
+#### Data:
 **data/example_order.txt:** sample order file  
 **data/example_widget.txt:** sample widget specification file  
 #### Library:
