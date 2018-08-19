@@ -35,3 +35,5 @@ Java 1.8+
 3. _mkdir out_
 4. _javac -d out -sourcepath src -cp libs/WidgetFactory.jar src/ProtoFactory/Main.java_
 5. _java -cp out:libs/WidgetFactory.jar ProtoFactory.Main_
+
+User is prompted for the widget specification and order data files.  If no input is given, the default files in the _data_ folder will be used.
