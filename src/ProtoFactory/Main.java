@@ -4,18 +4,36 @@ import ProtoFactory.FileReader.OrderFileReader;
 import ProtoFactory.FileReader.SpecFileReader;
 import WidgetFactory.PartNotFoundException;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 public class Main {
 
+    private String specFile = "data/example_widget.txt";
+    private String orderFile = "data/example_order.txt";
+
+    private static String getUserInput(String prompt, String defaultValue) {
+        Console console = System.console();
+        if (console == null) {
+            return defaultValue;
+        }
+
+        String input = console.readLine("%s [%s]: ", prompt, defaultValue).trim();
+        if (input.equals("")) {
+            return defaultValue;
+        }
+
+        return input;
+    }
+
     public static void main(String[] args) {
         // read the widget specification file
         SpecFileReader specFileReader = new SpecFileReader();
-        WidgetSpec[] widgetSpecs = specFileReader.parse("data/example_widget.txt");
+        WidgetSpec[] widgetSpecs = specFileReader.parse(getUserInput("Widget specification file", "data/example_widget.txt"));
 
         // read the order file
         OrderFileReader orderFileReader = new OrderFileReader();
-        WidgetSpec[] orderSpecs = orderFileReader.parse("data/example_order.txt", widgetSpecs);
+        WidgetSpec[] orderSpecs = orderFileReader.parse(getUserInput("Order file", "data/example_order.txt"), widgetSpecs);
 
         ArrayList<String> madeWidgets = new ArrayList<>();
         ArrayList<String> failedWidgets = new ArrayList<>();
